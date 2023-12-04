@@ -1,13 +1,7 @@
-resource "aws_key_pair" "key_pair" {
-  key_name   = "my-key-pair"
-  public_key = file("./id_mykey.pub")
-}
-
 resource "aws_launch_template" "launch_template" {
   name_prefix                 = "my-launch-template"
   image_id                    = var.ami_id
   instance_type               = var.instance_type
-  key_name                    = aws_key_pair.key_pair.key_name
   user_data = base64encode(templatefile("user_data.tftpl", {db_host=aws_db_instance.rds_instance.address, db_name = var.db_name, db_username = var.db_username, db_password = var.db_password}))
 
   tag_specifications {

@@ -11,7 +11,7 @@ terraform {
     key            = "terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    //dynamodb_table = "dynamodb-locks-table-insper"
+    dynamodb_table = "dynamo_table"
   }
 }
 

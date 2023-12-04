@@ -17,6 +17,8 @@ db_username = "<usuário>"
 db_password = "<senha>"
 ```
 
+Antes de prosseguir, devem ser criados um bucket S3 e uma tabela Dynamodb, com o campo *chave de partição* preenchido com *LockID*, pelo console da AWS
+
 Em seguida, devem ser executados os seguintes comandos dentro da pasta raíz do projeto:
 
 ```bash
@@ -41,21 +43,21 @@ terraform destroy
 ## Decisões de projeto
 
 * Aplicação: Elastic Compute Cloud (EC2)
-* Banco de Dados Relational Database Service (RDS)
+* Banco de Dados Relational: Database Service (RDS)
 * Balanceamento de carga:  Application Load Balancer (ALB)
-* Comunicação entre serviços Virtual Private Cloud (VPC)
+* Comunicação entre serviços: Virtual Private Cloud (VPC)
 * Monitoramento de uso: CloudWatch
 * Proteção da comunicação: Security Groups
-* Redirecionamento para instância saudáveis Health Checks para o ALB
+* Redirecionamento para instância saudáveis: Health Checks para o ALB
 * Alta disponibilidade:  Auto Scaling Group (ASG)
 * Segurança das instâncias: IAM Role
 
 ### Região
 
-A região escolhida foi us-east-1, que corresponde à região do Norte da Virgínia, nos EUA.
+A região escolhida foi us-east-1, que corresponde à região do Norte da Virgínia, nos EUA. Ela possui menores custos por instâncias e por transferências de dados, menores latências e atendem a todos os requesitos de serviços necessários para esse projeto.
 
 [Fonte](https://www.concurrencylabs.com/blog/choose-your-aws-region-wisely/)
 
 ## Custos
 
-O cálculo de custos pode ser encontrado no arquivo *My Estimate - AWS Pricing Calculator.pdf* na pasta raíz do projeto, ou [aqui](https://calculator.aws/#/estimate?id=9487eb5a8c63fe66de29a7ec90b1a8fc4b900b7a)
+O cálculo de custos pode ser encontrado no arquivo *My Estimate - AWS Pricing Calculator.pdf*, na pasta raíz do projeto, ou [aqui](https://calculator.aws/#/estimate?id=67b896516deeea88e018a7cd888800849848b4fb)
